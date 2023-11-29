@@ -86,6 +86,8 @@ Route::get('food', function () {
     return view('food');
 });
 
+//First Task
+
 Route::get('about', function () {
     return 'Welcome to About page ';
 });

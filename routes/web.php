@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExampleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -113,3 +114,15 @@ Route::prefix('blog')->group( function () {
     });
 
 });
+Route::get('login',function(){
+    return view('login');
+});
+Route::post('logged',function(){
+    // $email=$_POST["email"];
+    // $password=$_POST["pwd"];
+    // return 'email is : ' . $email . "<br>".'password is : ' .$password;
+    return 'you are logged in';
+})->name('logged'); 
+Route::post('control',[ExampleController::class,'show']);
+// ===================task 3=====================
+Route::post('data',[ExampleController::class,'showData'])->name("mydata");

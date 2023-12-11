@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Car;
+use App\Models\Post;
 
 
-class CarController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class CarController extends Controller
     public function index()
     {
         //
-        $cars=Car::get(); //load data in cars variable
-        return view('cars', compact('cars')); //send data into cars blade file
+        $posts=Post::get(); //load data in posts variable
+        return view('posts', compact('posts')); //send data into posts blade file
         //compact(variable name)
     }
 
@@ -25,7 +25,7 @@ class CarController extends Controller
     public function create()
     {
         //
-        return view('addCar');
+        return view('addPost');
     }
 
     /**
@@ -33,19 +33,17 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        // store data into car table
-        $cars=new Car();
-        $cars->title=$request->title;
-        $cars->description=$request->description;
+        $posts=new Post();
+        $posts->title=$request->title;
+        $posts->description=$request->description;
+        $posts->author=$request->author;
         if (isset($request->published)){
-            $cars->published=1;
+            $posts->published=1;
         }else{
-            $cars->published=0;
+            $posts->published=0;
         }
-        $cars->save();
-        return 'Data added successfully';
-        // return dd($request->request);
-
+        $posts->save();
+        return 'post added successfully';
     }
 
     /**

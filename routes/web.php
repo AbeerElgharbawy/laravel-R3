@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExampleController;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -126,3 +128,13 @@ Route::post('logged',function(){
 Route::post('control',[ExampleController::class,'show']);
 // ===================task 3=====================
 Route::post('data',[ExampleController::class,'showData'])->name("mydata");
+//======================================
+// store data into car table
+// Route::get('storeCar',[CarController::class,'store']);
+Route::post('store',[CarController::class,'store'])->name("storeCar");
+// add data 
+Route::get('createCar',[CarController::class,'create']);
+Route::get('cars',[CarController::class,'index']);
+Route::get('createPost',[PostController::class,'create']);
+Route::post('storePost',[PostController::class,'store'])->name("storePost");
+Route::get('posts',[PostController::class,'index']);

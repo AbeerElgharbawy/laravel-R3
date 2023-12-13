@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report</title>
+    <title>Post Details</title>
 </head>
 <body>
     <h3>Post title: <mark>{{ $posts->title }}</mark></h3>

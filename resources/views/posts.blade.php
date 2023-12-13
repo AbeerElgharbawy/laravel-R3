@@ -10,6 +10,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+@include('includes.nav')
 <div class="container">
   <h2>Post List</h2>
   <!-- <p>The .table-hover class enables a hover state on table rows:</p>             -->
@@ -19,6 +20,8 @@
         <th>Title</th>
         <th>Description</th>
         <th>Published</th>
+        <th>Edit</th>
+        <th>Show details</th>
       </tr>
     </thead>
     <tbody>
@@ -32,6 +35,12 @@
             @else
                 No
             @endif
+        </td>
+        <td>
+          <a href="editPost/{{$post->id}}">Edit</a>
+        </td>
+        <td>
+          <a href="showPost/{{$post->id}}">Show</a>
         </td>
       </tr> 
       @endforeach

@@ -8,6 +8,8 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
+    private $columns =['title','description','published'];
+
     /**
      * Display a listing of the resource.
      */
@@ -51,7 +53,8 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $posts=Post::findOrFail($id); //load data in cars variable
+        return view('showPost', compact('posts'));
     }
 
     /**
@@ -59,7 +62,8 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('editPost',compact('post'));
     }
 
     /**
@@ -67,7 +71,11 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $data=$request->only($this->columns);
+        $data['published']=isset($request->published);
+        Post::where('id',$id)->update($data);
+        return redirect('posts');
     }
 
     /**

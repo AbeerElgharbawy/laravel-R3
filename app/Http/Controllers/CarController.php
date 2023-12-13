@@ -8,10 +8,12 @@ use App\Models\Car;
 
 class CarController extends Controller
 {
+    private $columns =['title','description','published'];
     /**
      * Display a listing of the resource.
      */
     public function index()
+
     {
         //
         $cars=Car::get(); //load data in cars variable
@@ -34,18 +36,22 @@ class CarController extends Controller
     public function store(Request $request)
     {
         // store data into car table
-        $cars=new Car();
-        $cars->title=$request->title;
-        $cars->description=$request->description;
-        if (isset($request->published)){
-            $cars->published=1;
-        }else{
-            $cars->published=0;
-        }
-        $cars->save();
-        return 'Data added successfully';
-        // return dd($request->request);
-
+        // $cars=new Car();
+        // $cars->title=$request->title;
+        // $cars->description=$request->description;
+        // if (isset($request->published)){
+        //     $cars->published=1;
+        // }else{
+        //     $cars->published=0;
+        // }
+        // $cars->save();
+        // return 'Data added successfully';
+        
+        //another way
+        $data=$request->only($this->columns);
+        $data['published']=isset($request->published);
+        Car::create($data);
+        return redirect('cars');
     }
 
     /**
@@ -53,7 +59,8 @@ class CarController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $cars=Car::findOrFail($id); //load data in cars variable
+        return view('showCar', compact('cars'));
     }
 
     /**
@@ -62,6 +69,8 @@ class CarController extends Controller
     public function edit(string $id)
     {
         //
+        $car = Car::findOrFail($id);
+        return view('updateCar',compact('car'));
     }
 
     /**
@@ -69,7 +78,10 @@ class CarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data=$request->only($this->columns);
+        $data['published']=isset($request->published);
+        Car::where('id',$id)->update($data);
+        return redirect('cars');
     }
 
     /**

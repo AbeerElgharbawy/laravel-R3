@@ -134,7 +134,18 @@ Route::post('data',[ExampleController::class,'showData'])->name("mydata");
 Route::post('store',[CarController::class,'store'])->name("storeCar");
 // add data 
 Route::get('createCar',[CarController::class,'create']);
-Route::get('cars',[CarController::class,'index']);
+Route::get('cars',[CarController::class,'index'])->name('cars');
 Route::get('createPost',[PostController::class,'create']);
 Route::post('storePost',[PostController::class,'store'])->name("storePost");
-Route::get('posts',[PostController::class,'index']);
+Route::get('posts',[PostController::class,'index'])->name('posts');
+//update car data
+Route::get('updateCar/{id}',[CarController::class,'edit']);
+Route::put('update/{id}',[CarController::class,'update'])->name('update');
+Route::get('showCar/{id}',[CarController::class,'show'])->name('showCar');
+//update posts
+Route::get('editPost/{id}',[PostController::class,'edit']);
+Route::put('updatePost/{id}',[PostController::class,'update'])->name('updatePost');
+//show post detail
+Route::get('showPost/{id}',[PostController::class,'show'])->name('showPost');
+
+

@@ -147,5 +147,20 @@ Route::get('editPost/{id}',[PostController::class,'edit']);
 Route::put('updatePost/{id}',[PostController::class,'update'])->name('updatePost');
 //show post detail
 Route::get('showPost/{id}',[PostController::class,'show'])->name('showPost');
+//delete
+Route::get('deleteCar/{id}',[CarController::class,'destroy']);
+Route::get('trashed',[CarController::class,'trashed'])->name('trashed');
+Route::get('forceDelete/{id}',[CarController::class,'forceDelete'])->name('forceDelete');
+Route::get('restoreCar/{id}',[CarController::class,'restore'])->name('restoreCar');
+//task 6
+Route::get('deletePost/{id}',[PostController::class,'destroy']);
+Route::get('trashedPost',[PostController::class,'trashed'])->name('trashedPost');
+Route::get('forceDelete/{id}',[PostController::class,'forceDelete'])->name('forceDelete');
+Route::get('restorePost/{id}',[PostController::class,'restore'])->name('restorePost');
+
+
+
+
+
 
 

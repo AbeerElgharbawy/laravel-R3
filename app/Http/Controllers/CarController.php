@@ -48,7 +48,11 @@ class CarController extends Controller
         // return 'Data added successfully';
         
         //another way
-        $data=$request->only($this->columns);
+        // $data=$request->only($this->columns);
+        $data=$request->validate([
+            'title'=>'required|string|max:50',
+            'description'=>'required|string'
+        ]);
         $data['published']=isset($request->published);
         Car::create($data);
         return redirect('cars');
@@ -89,6 +93,22 @@ class CarController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Car::where('id',$id)->delete();
+        return redirect('cars');
+    }
+    public function trashed()
+    {
+       $cars=Car::onlyTrashed()->get();
+       return view('trashed',compact('cars'));
+    }
+    public function forceDelete(string $id)
+    {
+        Car::where('id',$id)->forceDelete();
+        return redirect('cars');
+    }
+    public function restore(string $id)
+    {
+        Car::where('id',$id)->restore();
+        return redirect('cars');
     }
 }

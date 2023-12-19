@@ -8,6 +8,8 @@
       <li ><a href="createCar">Insert Car</a></li>
       <li><a href="cars">Cars</a></li>
       <li><a href="posts">Posts</a></li>
+      <li><a href="{{route('trashed')}}">Trashed Car</a></li>
+      <li><a href="{{route('trashedPost')}}">Trashed Post</a></li>
       <li><a href="#">Page 3</a></li>
     </ul>
   </div>

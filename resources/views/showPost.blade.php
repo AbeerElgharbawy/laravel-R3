@@ -11,6 +11,6 @@
     <h3>Post published: <mark>{{ $posts->title?"Yes":"No" }}</mark></h3>
     <h3>Created At:<mark> {{ $posts->created_at }}</mark></h3>
     <h3>Updated At:<mark> {{ $posts->updated_at }}</mark></h3>
-    
+
 </body>
 </html>

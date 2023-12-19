@@ -16,6 +16,7 @@ class PostController extends Controller
     public function index()
     {
         //
+        
         $posts=Post::get(); //load data in posts variable
         return view('posts', compact('posts')); //send data into posts blade file
         //compact(variable name)
@@ -34,7 +35,14 @@ class PostController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
+
     {
+        $data=$request->validate([
+            'title'=>'required|string|max:50',
+            'description'=>'required|string',
+            'author'=>'required|string|max:50',
+
+        ]);
         $posts=new Post();
         $posts->title=$request->title;
         $posts->description=$request->description;
@@ -83,6 +91,23 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Post::where('id',$id)->delete();
+        return redirect('posts');
     }
+    public function trashed()
+    {
+       $posts=Post::onlyTrashed()->get();
+       return view('trashedPost',compact('posts'));
+    }
+    public function forceDelete(string $id)
+    {
+        Post::where('id',$id)->forceDelete();
+        return redirect('posts');
+    }
+    public function restore(string $id)
+    {
+        Post::where('id',$id)->restore();
+        return redirect('posts');
+    }
+    
 }

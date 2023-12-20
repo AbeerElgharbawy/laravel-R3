@@ -157,6 +157,14 @@ Route::get('deletePost/{id}',[PostController::class,'destroy']);
 Route::get('trashedPost',[PostController::class,'trashed'])->name('trashedPost');
 Route::get('forceDelete/{id}',[PostController::class,'forceDelete'])->name('forceDelete');
 Route::get('restorePost/{id}',[PostController::class,'restore'])->name('restorePost');
+//
+Route::get('tests',function(){
+    return view('image');
+});
+Route::get('tests1',function(){
+    return view('test');
+});
+Route::post('imageUpload',[ExampleController::class,'upload'])->name('imageUpload');
 
 
 

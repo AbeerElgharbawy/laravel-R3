@@ -41,7 +41,6 @@ class PostController extends Controller
             'title'=>'required|string|max:50',
             'description'=>'required|string',
             'author'=>'required|string|max:50',
-
         ]);
         $posts=new Post();
         $posts->title=$request->title;

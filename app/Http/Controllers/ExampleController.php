@@ -17,4 +17,12 @@ class ExampleController extends Controller
             }else{$remember="False";}
             return 'Email : '.$email .'<br> Password : '. $password . '<br> Remember Me:'.$remember;
     }
+    public function upload(Request $request){
+        $file_extension = $request->image->getClientOriginalExtension();
+        $file_name = time() . '.' . $file_extension;
+        $path = 'assets/images';
+        $request->image->move($path, $file_name);
+        return 'Uploaded';
+    }
+
 }

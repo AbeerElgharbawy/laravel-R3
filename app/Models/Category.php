@@ -4,16 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Car extends Model
+class Category extends Model
 {
-    use HasFactory,softDeletes;
+    use HasFactory;
     protected $fillable = [
         'cat_name',
-        'description',
-        'published',
-        'category_id',
-        'image',
         ];
 }

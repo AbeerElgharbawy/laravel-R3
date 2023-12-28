@@ -165,7 +165,21 @@ Route::get('tests1',function(){
     return view('test');
 });
 Route::post('imageUpload',[ExampleController::class,'upload'])->name('imageUpload');
-
+Route::get('testHome',function(){
+    return view('testHome');
+});
+Route::get('pages',function(){
+    return view('layouts/pages');
+});
+Route::get('404',function(){
+    return view('404');
+})->name('404');
+Route::get('contact',function(){
+    return view('contact');
+})->name('contact');
+Route::get('home',function(){
+    return view('testHome');
+})->name('testHome');
 
 
 

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('author',100);
             $table->softDeletes();
             $table->timestamps();
+            
         });
     }
 

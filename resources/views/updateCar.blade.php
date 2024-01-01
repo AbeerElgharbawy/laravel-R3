@@ -29,6 +29,15 @@
     <br>
     <img src="{{asset('assets/images/'. $car->image)}}" alt="{{$car->title}}" style="width:200px;">
     <br>
+    <br>
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <select name="category_id" id="">
+        @foreach($categories as $category)
+        <option value={{$category->id}} {{ $category->id == $car->category_id ? 'selected':'' }}>{{$category->cat_name}}</option>
+        @endforeach
+      </select>
+    </div>
     <div class="checkbox">
       <label><input type="checkbox" name="published" @checked($car->published)> Published me</label>
     </div>

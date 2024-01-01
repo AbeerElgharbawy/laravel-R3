@@ -11,5 +11,6 @@
     <h2>Published:{{$cars-> published? " Yes":" No"}}</h2>
     <h2>Created At:{{$cars-> created_at}}</h2>
     <h2>Updated AT:{{$cars-> updated_at}}</h2>
+    <h2>Category:{{$cars->category->cat_name}}</h2>
 </body>
 </html>

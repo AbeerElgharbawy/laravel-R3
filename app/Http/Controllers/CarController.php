@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Car;
+use App\Models\Category;
 use App\Traits\Common;
 
 
@@ -27,8 +28,8 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
-        return view('addCar');
+        $categories=Category::get(); 
+        return view('addCar', compact('categories'));
     }
 
     /**
@@ -56,6 +57,7 @@ class CarController extends Controller
             'description'=>'required|string',
             'image'=>'required|mimes:png,jpg,jpeg|max:2048',
         ],$messages);
+        
         $fileName=$this->uploadFile($request->image,'assets/images');
         $data['image']=$fileName;
         $data['published']=isset($request->published);
@@ -79,7 +81,8 @@ class CarController extends Controller
     {
         //
         $car = Car::findOrFail($id);
-        return view('updateCar',compact('car'));
+        $categories=Category::get(); 
+        return view('updateCar',compact('car','categories'));
     }
 
     /**
@@ -91,16 +94,22 @@ class CarController extends Controller
         $data=$request->validate([
             'title'=>'required|string|max:50',
             'description'=>'required|string',
-            'image'=>'mimes:jpg,png,jpeg|max:2048'
-        ]
+            'image'=>'mimes:jpg,png,jpeg|max:2048',
+            'category_id'=>'required',
+        ],$messages
         );
+        
         $data['published']=isset($request->published);
         //$oldImage=$request->image;
         if(isset($request->image)){
             $file=$request->image;
             $fileName=$this->uploadFile($file,'assets/images');
             $data['image']=$fileName;   
+        }       
+        if(isset($request->category_id)){
+            $data['category_id']=$request->category_id ;
         }
+
         Car::where('id',$id)->update($data);
         return redirect('cars');
     }
@@ -133,6 +142,8 @@ class CarController extends Controller
             'title.required'=>'عنوان السيارة مطلوب',
             'description.string'=>'Should be string',
             'image.required'=>'Please be sure to select an image',
+            'category_id.required'=>'Please choose category',
         ];
     }
+    
 }

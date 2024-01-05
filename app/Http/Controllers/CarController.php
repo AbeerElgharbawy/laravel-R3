@@ -105,11 +105,7 @@ class CarController extends Controller
             $file=$request->image;
             $fileName=$this->uploadFile($file,'assets/images');
             $data['image']=$fileName;   
-        }       
-        if(isset($request->category_id)){
-            $data['category_id']=$request->category_id ;
-        }
-
+        }  
         Car::where('id',$id)->update($data);
         return redirect('cars');
     }

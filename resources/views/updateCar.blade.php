@@ -34,7 +34,7 @@
       <label for="category">Category:</label>
       <select name="category_id" id="">
         @foreach($categories as $category)
-        <option value={{$category->id}} {{ $category->id == $car->category_id ? 'selected':'' }}>{{$category->cat_name}}</option>
+        <option value={{$category->id}}  {{ $category->id == $car->category_id ? 'selected':'' }}>{{$category->cat_name}}</option>
         @endforeach
       </select>
     </div>

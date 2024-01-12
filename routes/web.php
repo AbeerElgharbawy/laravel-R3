@@ -190,3 +190,8 @@ Route::get('home',function(){
 Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('session', [App\Http\Controllers\ExampleController::class, 'createSession']);
+Route::get('contactUS',function(){
+    return view('contactUS');
+})->name('contactUS');
+Route::post('contactmail', [App\Http\Controllers\ExampleController::class, 'contact'])->name('contactmail');

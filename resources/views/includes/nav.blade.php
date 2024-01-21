@@ -10,6 +10,8 @@
       <li><a href="posts">Posts</a></li>
       <li><a href="{{route('trashed')}}">Trashed Car</a></li>
       <li><a href="{{route('trashedPost')}}">Trashed Post</a></li>
+      <!-- <li><a href={{ LaravelLocalization::getLocalizedURL('en') }}>English</a></li>
+      <li><a href={{ LaravelLocalization::getLocalizedURL('en') }}>Arabic</a></li> -->
       <li><a href="#">Page 3</a></li>
     </ul>
   </div>

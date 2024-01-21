@@ -20,14 +20,14 @@
         <div class="fcf-form-group">
             <label for="Name" class="fcf-label">Your name</label>
             <div class="fcf-input-group">
-                <input type="text" id="Name" name="Name" class="fcf-form-control" required>
+                <input type="text" id="Name" name="name" class="fcf-form-control" required>
             </div>
         </div>
 
         <div class="fcf-form-group">
             <label for="Email" class="fcf-label">Your email address</label>
             <div class="fcf-input-group">
-                <input type="email" id="Email" name="Email" class="fcf-form-control" required>
+                <input type="email" id="Email" name="email" class="fcf-form-control" required>
             </div>
         </div>
         <div class="fcf-form-group">
@@ -40,7 +40,7 @@
         <div class="fcf-form-group">
             <label for="Message" class="fcf-label">Your message</label>
             <div class="fcf-input-group">
-                <textarea id="Message" name="Message" class="fcf-form-control" rows="6" maxlength="3000" required></textarea>
+                <textarea id="Message" name="message" class="fcf-form-control" rows="6" maxlength="3000" required></textarea>
             </div>
         </div>
 

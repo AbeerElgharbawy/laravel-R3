@@ -33,7 +33,13 @@ class ExampleController extends Controller
         return 'session created ' . session(('testSession'));
     }
     public function contact(Request $request){
-        Mail::to('abeerrahmed88@gmail.com')->send(new testMail($request));
+        $data = $request->validate([
+            'name'=>'required|string|max:50',
+            'email'=> 'required|string',
+            'subject' => 'required',
+            'message' => 'required',
+           ]);
+        Mail::to('abeerrahmed88@gmail.com')->send(new testMail($data));
         return redirect('contactUS');
     }
 

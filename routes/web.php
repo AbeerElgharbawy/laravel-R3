@@ -131,9 +131,16 @@ Route::post('data',[ExampleController::class,'showData'])->name("mydata");
 //======================================
 // store data into car table
 // Route::get('storeCar',[CarController::class,'store']);
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+        ], function(){ 
+            
 Route::post('store',[CarController::class,'store'])->name("storeCar");
 // add data 
-Route::get('createCar',[CarController::class,'create'])->middleware('verified');
+Route::get('createCar',[CarController::class,'create']);
+// Route::get('createCar',[CarController::class,'create'])->middleware('verified');
 Route::get('cars',[CarController::class,'index'])->name('cars');
 Route::get('createPost',[PostController::class,'create']);
 Route::post('storePost',[PostController::class,'store'])->name("storePost");
@@ -158,6 +165,8 @@ Route::get('trashedPost',[PostController::class,'trashed'])->name('trashedPost')
 Route::get('forceDelete/{id}',[PostController::class,'forceDelete'])->name('forceDelete');
 Route::get('restorePost/{id}',[PostController::class,'restore'])->name('restorePost');
 //
+});
+
 Route::get('tests',function(){
     return view('image');
 });
@@ -168,6 +177,7 @@ Route::post('imageUpload',[ExampleController::class,'upload'])->name('imageUploa
 Route::get('testHome',function(){
     return view('testHome');
 });
+
 Route::get('pages',function(){
     return view('layouts/pages');
 });
